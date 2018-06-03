@@ -1,25 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-      this.state = {
-        products: ''
-      }
-    }
+    this.state = {
+      products: 'https://ibb.co/bsAWsd',
+    };
+  }
 
   render() {
-   return (
-      <div id= "app">
-        Rendering React
+    return (
+      <div id="app">
+        {this.state.products}
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(< App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
 
 module.exports = App;
