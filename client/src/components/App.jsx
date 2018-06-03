@@ -6,14 +6,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      products: 'https://ibb.co/bsAWsd',
+      products: 'https://n.nordstrommedia.com/ImageGallery/store/product/Zoom/9/_103331749.jpg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1197',
     };
   }
 
   render() {
     return (
-      <div id="app">
-        {this.state.products}
+      <div>
+        <img src={this.state.products} />
       </div>
     );
   }
