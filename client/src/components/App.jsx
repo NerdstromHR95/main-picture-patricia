@@ -3,14 +3,15 @@ import React from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 import '../main.css';
-import images from './firstImages';
+import Zoom from './Zoom';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: images.polo,
-      mainImage: images.polo[0],
+      products: [],
+      mainImage: '',
       click: false,
     };
     this.get = this.get.bind(this);
@@ -19,19 +20,27 @@ class App extends React.Component {
     this.get();
   }
   get() {
-    axios.get('/home')
+    axios.get('http://localhost:3001/home')
       .then((response) => {
+        const arr = [];
+        for (let i = 0; i < response.data.length; i++) {
+          arr.push(response.data[i].img_url);
+        }
         this.setState({
-          products: response.data,
+          products: arr,
+          mainImage: arr[0],
         });
-      });
+      })
+      .catch((err =>
+        console.log(err)
+      ));
   }
 
   slideUp(hidden) {
     if (this.state.click === false) {
       $('#container-left').slideUp('slow');
       $('#slide').append(`<div id="container-left" key={index}> <img src= ${hidden} alt="thumbnails" /> </div>`).fadeIn('slow').addClass('1');
-      $('#topArrow').remove();
+      $('#topArrow').hide();
       $('#top').prepend($('<input id="downArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />'));
       this.setState({
         click: true,
@@ -45,12 +54,13 @@ class App extends React.Component {
       mainImage: clicked,
     });
   }
+
   render() {
     $('#downArrow').on('click', () => {
       $('#downArrow').remove();
       $('#container-left').slideDown('slow');
       $('.1').remove();
-      $('#slide').prepend($('<input id="topArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />'));
+      $('#slide').append($('<input id="topArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />'));
       this.setState({
         click: false,
       });
@@ -60,12 +70,9 @@ class App extends React.Component {
       this.slideUp();
     });
     const thumbnails = [];
-    const allImages = [];
     let extras = [];
     const hidden = [];
-    for (let i = 0; i < this.state.products.length; i += 1) {
-      allImages.push(<div id="allImages"> <img src={this.state.products.length[i]} alt="thumbnails" /> </div>);
-    }
+
     extras = this.state.products.slice(5, this.state.products.length + 1);
     for (let i = 0; i < extras.length; i += 1) {
       hidden.push(extras[i]);
@@ -77,7 +84,7 @@ class App extends React.Component {
       return (
         <div>
           <div id="container">
-            <img src={this.state.mainImage} alt="test" />
+            <Zoom img={this.state.mainImage} />
           </div>
           <div id="top" />
           {thumbnails.map((img, index) =>
@@ -92,8 +99,10 @@ class App extends React.Component {
         <div id="container">
           <img src={this.state.mainImage} alt="test" />
         </div>
-        {this.state.products.map((img, index) =>
-          <div id="container-left" key={index}> <img src={img} alt="thumbnails" /> </div>)}
+        <div id="left-container">
+          {this.state.products.map((img, index) =>
+          <div id="container-left" key={index}> <img src={img.img_url} alt="thumbnails" /> </div>)}
+        </div>
       </div>
     );
   }
