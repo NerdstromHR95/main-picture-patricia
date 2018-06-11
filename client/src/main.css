@@ -1,14 +1,15 @@
+
 /* Left carousel elements */
 
-#container-left {
-    width: 00px;
+ #container-left {
+    width: 0px;
     height: auto;
     margin-top: 10px;
-}
+} 
 
 #container-left img{
     width: 60px;
-    height: auto;
+    height: 90px;
     margin-left: 50px;
     margin-top: 0px;
     color: none;
@@ -33,15 +34,17 @@
     cursor: pointer;
 }
 
-#container-left-change img{
-    width: 60px;
-    height: auto;
-    margin-left: 50px;
-}
+/* Main Image  */
+
 #container {
     width: 200px;
     height: 120px;
 }
+
+.main:hover {
+    cursor: zoom-in;
+}
+
 #container img {
     width: 377px;
     height: auto;
@@ -51,12 +54,8 @@
     top: 0;
     left: 0;
 }
-#results {
-    font-size: 15px;
-    margin-top: 90px;
-    margin-left: 40px;
+/* Arrows */
 
-}
 #downArrow {
     width: 30px;
     height: 15;
@@ -80,18 +79,15 @@
     color: grey;
 }
 
-.main:hover {
-    cursor: zoom-in;
-}
 
 /* Container Color Picker */
     #container-color {
     position: fixed;
     display: inline-block;
-    top:80%;
+    top:87%;
     right:0%; 
     background-color: white;
-    height: 17%;
+    height: 13%;
     margin-left:0px;
     margin-bottom: 0px;
     width:118%;
@@ -103,20 +99,24 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-top: 50px;
+    margin-top: 45px;
     margin-left: 2%;
   }
  
+  #red-picker img:focus {
+    border: 3px double grey;
+  }
   #red-picker img:hover {
     border: 3px double grey;
   }
+
 
   #white-picker img{
     position: absolute;
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-top: 50px;
+    margin-top: 45px;
     margin-left: 6%;
   }
 
@@ -129,7 +129,7 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-top: 50px;
+    margin-top: 45px;
     margin-left: 10%;
   }
 

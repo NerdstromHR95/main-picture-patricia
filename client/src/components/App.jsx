@@ -1,4 +1,3 @@
-
 import React from 'react';
 import axios from 'axios';
 import $ from 'jquery';
@@ -23,7 +22,7 @@ class App extends React.Component {
     axios.get('http://localhost:3001/home')
       .then((response) => {
         const arr = [];
-        for (let i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < response.data.length; i += 1) {
           arr.push(response.data[i].img_url);
         }
         this.setState({
@@ -40,21 +39,22 @@ class App extends React.Component {
       body: color,
     })
       .then((response) => {
-        const arr = [];
-        for (let i = 0; i < response.data.length; i++) {
-          arr.push(response.data[i].img_url);
+        const arr2 = [];
+        console.log(arr2)
+        for (let i = 0; i < response.data.length; i += 1) {
+          arr2.push(response.data[i].img_url);
         }
         this.setState({
-          products: arr,
-          mainImage: arr[0],
+          products: arr2,
+          mainImage: arr2[0],
         });
       })
       .catch((err =>
         console.log(err)
       ));
   }
-
   slideUp(hidden) {
+    // console.log(hidden)
     if (this.state.click === false) {
       $('#container-left').slideUp('slow');
       $('#slide').append(`<div id="container-left" key={index}> <img src= ${hidden} alt="thumbnails" /> </div>`).fadeIn('slow').addClass('1');
@@ -65,14 +65,14 @@ class App extends React.Component {
       });
     }
   }
-
+ 
   changeMainPhoto(event) {
     const clicked = event.target.src;
     this.setState({
       mainImage: clicked,
     });
   }
-
+ 
   render() {
     $('#downArrow').on('click', () => {
       $('#downArrow').remove();
@@ -90,12 +90,12 @@ class App extends React.Component {
     const thumbnails = [];
     let extras = [];
     const hidden = [];
-
+ 
     extras = this.state.products.slice(5, this.state.products.length + 1);
     for (let i = 0; i < extras.length; i += 1) {
       hidden.push(extras[i]);
     }
-    if (this.state.products.length >= 5) {
+    if (this.state.products.length > 5) {
       for (let i = 0; i < 5; i += 1) {
         thumbnails.push(this.state.products[i]);
       }
@@ -115,15 +115,16 @@ class App extends React.Component {
     return (
       <div>
         <div id="container">
-          <img src={this.state.mainImage} alt="test" />
+        <Zoom img={this.state.mainImage} changeColor={this.changeColor} />
         </div>
         <div id="left-container">
           {this.state.products.map((img, index) =>
-            <div id="container-left" key={index}> <img src={img.img_url} alt="thumbnails" /> </div>)}
+            <div id="container-left" key={index}> <img src={img} alt="thumbnails" /> </div>)}
         </div>
       </div>
     );
   }
 }
+ 
 
 export default App;
