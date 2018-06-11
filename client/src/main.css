@@ -1,3 +1,5 @@
+/* Left carousel elements */
+
 #container-left {
     width: 00px;
     height: auto;
@@ -11,10 +13,11 @@
     margin-top: 0px;
     color: none;
     cursor: pointer;
+
 }
 
 #top {
-    margin-top: 80px;
+    margin-top: 80px;    
 }
 #container-left img:hover{
     border-bottom: 3px solid rgba(170, 165, 165, 0.657);  
@@ -44,6 +47,9 @@
     height: auto;
     margin-top: 200px;
     margin-left: 200px;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 #results {
     font-size: 15px;
@@ -73,3 +79,64 @@
 #topArrow:hover {
     color: grey;
 }
+
+.main:hover {
+    cursor: zoom-in;
+}
+
+/* Container Color Picker */
+    #container-color {
+    position: fixed;
+    display: inline-block;
+    top:80%;
+    right:0%; 
+    background-color: white;
+    height: 17%;
+    margin-left:0px;
+    margin-bottom: 0px;
+    width:118%;
+    margin-right:-20%; 
+    }  
+
+#red-picker img{
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 2%;
+  }
+ 
+  #red-picker img:hover {
+    border: 3px double grey;
+  }
+
+  #white-picker img{
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 6%;
+  }
+
+  #white-picker img:hover {
+    border: 3px double grey;
+  }
+
+  #black-picker img{
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 50px;
+    margin-left: 10%;
+  }
+
+  #black-picker img:hover {
+    border: 3px double grey;
+  }
+
+  #color {
+    position: absolute;
+  }
