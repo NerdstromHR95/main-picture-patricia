@@ -1,0 +1,28 @@
+#container-left {
+    width: 50px;
+    height: auto;
+}
+
+#container-left img{
+    width: 60px;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+#container {
+    width: 200px;
+    height: 120px;
+}
+#container img {
+    width: 377px;
+    height: auto;
+    margin-top: 200px;
+    margin-left: 200px;
+}
+#results {
+    font-size: 15px;
+    margin-top: 90px;
+    margin-left: 40px;
+
+}
