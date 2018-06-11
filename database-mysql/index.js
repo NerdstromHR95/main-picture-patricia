@@ -16,4 +16,14 @@ function getProductsFromDb(callback) {
   });
 }
 
-module.exports = { getProductsFromDb };
+function getProductsFromDbByColor(color, callback) {
+  const q = `SELECT img_url from products WHERE color LIKE "${color}" AND product_id LIKE 100`;
+  connection.query(q, (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+module.exports = { getProductsFromDb, getProductsFromDbByColor };

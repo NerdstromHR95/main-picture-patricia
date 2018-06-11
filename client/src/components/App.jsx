@@ -5,7 +5,6 @@ import $ from 'jquery';
 import '../main.css';
 import Zoom from './Zoom';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,12 +14,31 @@ class App extends React.Component {
       click: false,
     };
     this.get = this.get.bind(this);
+    this.changeColor = this.changeColor.bind(this);
   }
   componentDidMount() {
     this.get();
   }
   get() {
     axios.get('http://localhost:3001/home')
+      .then((response) => {
+        const arr = [];
+        for (let i = 0; i < response.data.length; i++) {
+          arr.push(response.data[i].img_url);
+        }
+        this.setState({
+          products: arr,
+          mainImage: arr[0],
+        });
+      })
+      .catch((err =>
+        console.log(err)
+      ));
+  }
+  changeColor(color) {
+    axios.post(`http://localhost:3001/color${color}request`, {
+      body: color,
+    })
       .then((response) => {
         const arr = [];
         for (let i = 0; i < response.data.length; i++) {
@@ -84,7 +102,7 @@ class App extends React.Component {
       return (
         <div>
           <div id="container">
-            <Zoom img={this.state.mainImage} />
+            <Zoom img={this.state.mainImage} changeColor={this.changeColor} />
           </div>
           <div id="top" />
           {thumbnails.map((img, index) =>
@@ -101,7 +119,7 @@ class App extends React.Component {
         </div>
         <div id="left-container">
           {this.state.products.map((img, index) =>
-          <div id="container-left" key={index}> <img src={img.img_url} alt="thumbnails" /> </div>)}
+            <div id="container-left" key={index}> <img src={img.img_url} alt="thumbnails" /> </div>)}
         </div>
       </div>
     );
