@@ -42,28 +42,28 @@ class Zoom extends React.Component {
     return (
       <div>
         <div onClick={() => this.changeState()}>
-        <ImageZoom
-          image={{
+          <ImageZoom
+            image={{
           src: this.props.img,
           alt: 'main-image',
           className: 'main',
-          style: { width: '50em' },
+          style: { width: '45em' },
         }}
-          zoomImage={{
+            zoomImage={{
           src: this.props.img,
           alt: 'main-image',
         }}
-        />
-      </div>
+          />
+        </div>
         <div id="container-color">
           <div id="color"> <p> Color: {this.state.color} </p> </div>
           <div id="black-picker" onClick={e => this.ChangeStateColor(e)}> <img alt="Black" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/1/_101963241.jpg?crop=fit&w=31&h=31" /></div>
           <div id="red-picker" onClick={e => this.ChangeStateColor(e)}>
-          <img alt="Red" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/18/_12214758.jpg?crop=fit&w=31&h=31" />
-        </div>
+            <img alt="Red" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/18/_12214758.jpg?crop=fit&w=31&h=31" />
+          </div>
           <div id="white-picker" onClick={e => this.ChangeStateColor(e)}>
-          <img alt="White" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/6/_101841106.jpg?crop=fit&w=31&h=31" />
-        </div>
+            <img alt="White" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/6/_101841106.jpg?crop=fit&w=31&h=31" />
+          </div>
         </div>
       </div>
     );
