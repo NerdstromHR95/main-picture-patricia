@@ -13,7 +13,6 @@ const Carousel = (props) => {
     vertical: true,
     accessibility: true,
     verticalSwiping: true,
-    // className: 'test',
   };
   return (
     <div>
