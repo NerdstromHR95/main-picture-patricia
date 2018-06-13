@@ -1,9 +1,11 @@
 
 import React from 'react';
 import axios from 'axios';
-import $ from 'jquery';
+import ImageZoom from 'react-medium-image-zoom';
+
 import '../main.css';
-import Zoom from './Zoom';
+import Carousel from './Carousel';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,36 +14,19 @@ class App extends React.Component {
       products: [],
       mainImage: '',
       click: false,
+      color: 'White',
+      product_id: 100,
     };
-    this.get = this.get.bind(this);
-    this.changeColor = this.changeColor.bind(this);
+    this.changeMainPhoto = this.changeMainPhoto.bind(this);
   }
   componentDidMount() {
-    this.get();
+    this.get(this.state.product_id);
   }
-  get() {
-    axios.get('http://localhost:3001/home')
+  get(id) {
+    axios.get(`http://localhost:3001/photo/${id}`)
       .then((response) => {
         const arr = [];
-        for (let i = 0; i < response.data.length; i++) {
-          arr.push(response.data[i].img_url);
-        }
-        this.setState({
-          products: arr,
-          mainImage: arr[0],
-        });
-      })
-      .catch((err =>
-        console.log(err)
-      ));
-  }
-  changeColor(color) {
-    axios.post(`http://localhost:3001/color${color}request`, {
-      body: color,
-    })
-      .then((response) => {
-        const arr = [];
-        for (let i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < response.data.length; i += 1) {
           arr.push(response.data[i].img_url);
         }
         this.setState({
@@ -54,16 +39,29 @@ class App extends React.Component {
       ));
   }
 
-  slideUp(hidden) {
-    if (this.state.click === false) {
-      $('#container-left').slideUp('slow');
-      $('#slide').append(`<div id="container-left" key={index}> <img src= ${hidden} alt="thumbnails" /> </div>`).fadeIn('slow').addClass('1');
-      $('#topArrow').hide();
-      $('#top').prepend($('<input id="downArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />'));
-      this.setState({
-        click: true,
-      });
-    }
+  changeColor(color, id) {
+    axios.get(`http://localhost:3001/photo/${color}/${id}`)
+      .then((response) => {
+        const arr = [];
+        for (let i = 0; i < response.data.length; i += 1) {
+          arr.push(response.data[i].img_url);
+        }
+        this.setState({
+          products: arr,
+          mainImage: arr[0],
+        });
+      })
+      .catch((err =>
+        console.log(err)
+      ));
+  }
+
+  ChangeStateColor(event) {
+    event.preventDefault();
+    this.changeColor(event.target.alt, this.state.product_id);
+    this.setState({
+      color: event.target.alt,
+    });
   }
 
   changeMainPhoto(event) {
@@ -73,53 +71,51 @@ class App extends React.Component {
     });
   }
 
-  render() {
-    $('#downArrow').on('click', () => {
-      $('#downArrow').remove();
-      $('#container-left').slideDown('slow');
-      $('.1').remove();
-      $('#slide').append($('<input id="topArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />'));
+  changeState() {
+    if (this.state.click === false) {
+      this.setState({
+        click: true,
+      });
+    } else {
       this.setState({
         click: false,
       });
-    });
-    $('#topArrow').on('click', (event) => {
-      event.preventDefault();
-      this.slideUp();
-    });
-    const thumbnails = [];
-    let extras = [];
-    const hidden = [];
-
-    extras = this.state.products.slice(5, this.state.products.length + 1);
-    for (let i = 0; i < extras.length; i += 1) {
-      hidden.push(extras[i]);
     }
-    if (this.state.products.length >= 5) {
-      for (let i = 0; i < 5; i += 1) {
-        thumbnails.push(this.state.products[i]);
-      }
+  }
+  render() {
+    if (this.state.click === false) {
       return (
         <div>
-          <div id="container">
-            <Zoom img={this.state.mainImage} changeColor={this.changeColor} />
-          </div>
-          <div id="top" />
-          {thumbnails.map((img, index) =>
-            <div onClick={(event => this.changeMainPhoto(event))} id="container-left" key={index}> <img src={img} alt="thumbnails" /> </div>)}
-          <div id="slide" />
-          <input onClick={() => this.slideUp(hidden)} id="topArrow" type="image" src="https://image.ibb.co/fQGP58/Screen_Shot_2018_06_05_at_11_40_00.png" alt="arrow" />
+          <div className="container" onClick={() => this.changeState()}> <img src={this.state.mainImage} alt="product" /> </div>
+          <Carousel img={this.state.products} func={this.changeMainPhoto} />
         </div>
       );
     }
     return (
       <div>
-        <div id="container">
-          <img src={this.state.mainImage} alt="test" />
+        <Carousel img={this.state.products} func={this.changeMainPhoto} />
+        <div onClick={() => this.changeState()}>
+          <ImageZoom
+            image={{
+        src: this.state.mainImage,
+        alt: 'main-image',
+        className: 'zoomed',
+        style: {
+          transition: 'opacity 2.0s ease-in',
+           width: '40em',
+         },
+          }}
+          />
         </div>
-        <div id="left-container">
-          {this.state.products.map((img, index) =>
-            <div id="container-left" key={index}> <img src={img.img_url} alt="thumbnails" /> </div>)}
+        <div id="container-color">
+          <div id="color"> <p> Color: {this.state.color} </p> </div>
+          <div id="black-picker" onClick={e => this.ChangeStateColor(e)}> <img alt="Black" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/1/_101963241.jpg?crop=fit&w=31&h=31" /></div>
+          <div id="red-picker" onClick={e => this.ChangeStateColor(e)}>
+            <img alt="Red" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/18/_12214758.jpg?crop=fit&w=31&h=31" />
+          </div>
+          <div id="white-picker" onClick={e => this.ChangeStateColor(e)}>
+            <img alt="White" src="https://n.nordstrommedia.com/ImageGallery/store/product/SwatchMedium/6/_101841106.jpg?crop=fit&w=31&h=31" />
+          </div>
         </div>
       </div>
     );
