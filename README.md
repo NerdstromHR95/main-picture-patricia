@@ -1,39 +1,22 @@
-# Project Name
 
-> Project description
+Photo View Module
 
-## Related Projects
+Instructions:
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+1. Run npm install to install dependencies;
 
-## Table of Contents
+2. Install MySQL;
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+3. Create a config.js file for MySQL connection;
 
-## Usage
+ const mysql = require('mysql');
 
-> Some usage instructions
+  const connection = {
+  user: 'yourusername',
+  password: 'yourpassword',
+  database: 'nerdstrom',
+};
 
-## Requirements
+connection.connect();
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-
+3. from the root directory, run node server/index.js to start server.
