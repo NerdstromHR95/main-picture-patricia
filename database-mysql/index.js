@@ -5,8 +5,8 @@ const connection = mysql.createConnection(mysqlConfig);
 
 connection.connect();
 
-function getProductsFromDb(callback) {
-  const q = 'SELECT img_url FROM products WHERE product_id LIKE 100';
+function getProductsFromDb(id, callback) {
+  const q = `SELECT img_url FROM products WHERE product_id LIKE "${id}" AND color LIKE "white"`;
   connection.query(q, (error, results) => {
     if (error) {
       callback(error, null);
@@ -16,8 +16,8 @@ function getProductsFromDb(callback) {
   });
 }
 
-function getProductsFromDbByColor(color, callback) {
-  const q = `SELECT img_url from products WHERE color LIKE "${color}" AND product_id LIKE 100`;
+function getProductsFromDbByColor(color, id, callback) {
+  const q = `SELECT img_url from products WHERE color LIKE "${color}" AND product_id LIKE "${id}"`;
   connection.query(q, (error, results) => {
     if (error) {
       callback(error, null);

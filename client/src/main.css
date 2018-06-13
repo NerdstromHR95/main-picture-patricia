@@ -1,142 +1,147 @@
 /* Left carousel elements */
-
-#container-left {
-    width: 00px;
-    height: auto;
-    margin-top: 10px;
+.slick-prev:before {
+  color: black !important;
 }
 
-#container-left img{
+.slick-next:before {
+  color: black !important;
+}
+
+.slick-slider {
+    top: 40px;
+    margin-top: 30px;
+  }
+
+.slick-list {
+    height: 540px;
+    width: 160px;
+    top: 30px;
+}
+
+.slick-slide, .slick-slide *{ 
+    outline: none !important; 
+}
+
+.slick-prev, .slick-next {
+    left: 50%;
+    transform: translate(-50%, 0) rotate(90deg);
+    margin-left: 47px;
+    margin-top: 30px;
+
+  }
+  .slick-next {
+    top: 100%;
+    bottom: -28px;
+  }
+  .slick-prev {
+    top: -30px;
+  }
+
+  .slick-slider, .slick-vertical, .slick-initialized {
+    width: 60px;
+    height: auto;
+  } 
+
+  /* Carousel */
+
+  #container-left img{
+    outline:0;
     width: 60px;
     height: auto;
     margin-left: 50px;
     margin-top: 0px;
     color: none;
     cursor: pointer;
+ }
 
-}
+ #container-left img:hover{
+  border-bottom: 3px solid rgba(170, 165, 165, 0.657); 
+ }
+ 
+ .border #container-left:hover {
+   color: pink
+ }
+/* Main Image */
 
-#top {
-    margin-top: 80px;    
-}
-#container-left img:hover{
-    border-bottom: 3px solid rgba(170, 165, 165, 0.657);  
-    transition-delay: 200ms ease
-}
+ .container img{
+  position: absolute;
+  width: 400px;
+  height: auto;
+  margin-top: 75px;
+  margin-left: 200px;
+ }
 
-.thumbnails:focus {
-    outline:0;
-    border-bottom: 3px solid rgba(170, 165, 165, 0.657);  
-}
-.thumbnails {
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-#container-left-change img{
-    width: 60px;
-    height: auto;
-    margin-left: 50px;
-}
-#container {
-    width: 200px;
-    height: 120px;
-}
-#container img {
-    width: 377px;
-    height: auto;
-    margin-top: 200px;
-    margin-left: 200px;
-    position: relative;
-    top: 0;
-    left: 0;
-}
-#results {
-    font-size: 15px;
-    margin-top: 90px;
-    margin-left: 40px;
-
-}
-#downArrow {
-    width: 30px;
-    height: 15;
-    margin-left: 65px;
-    display: block;
+ .container img:hover {
+  cursor: zoom-in;
 }
 
-#downArrow:hover {
-    background-color: grey;
-    border-bottom: 2px solid #DD0000;
+.zoomed {
+  position: absolute;
+  transition: 0.4s opacity ease-in-out;
+  margin-left: 200px !important;
+  margin-top: 30px;
+  top: 0px;
 }
 
-
-#topArrow {
-    margin-top: 0px;
-    margin-left: 65px;
-    width: 30px;
-}
-
-#topArrow:hover {
-    color: grey;
-}
-
-.main:hover {
-    cursor: zoom-in;
-}
+.zoomed:hover {
+  cursor: zoom-in;
+} 
 
 /* Container Color Picker */
-    #container-color {
-    position: fixed;
-    display: inline-block;
-    top:80%;
-    right:0%; 
-    background-color: white;
-    height: 17%;
-    margin-left:0px;
-    margin-bottom: 0px;
-    width:118%;
-    margin-right:-20%; 
-    }  
+
+#container-color {
+  position: fixed;
+  display: inline-block;
+  top:85%;
+  right:0%;
+  background-color: white;
+  height: 400px;
+  width: 118%;
+  margin-right:-20%;
+  } 
 
 #red-picker img{
-    position: absolute;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-top: 50px;
-    margin-left: 2%;
-  }
- 
-  #red-picker img:hover {
-    border: 3px double grey;
-  }
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-left: 80px;
+  border: 3px double grey;
+}
+#red-picker img:hover {
+  border: 3px double black;
+}
 
-  #white-picker img{
-    position: absolute;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-top: 50px;
-    margin-left: 6%;
-  }
+#white-picker img{
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-right: -70px;
+  border: 3px double grey;
+}
 
-  #white-picker img:hover {
-    border: 3px double grey;
-  }
+#white-picker img:hover {
+  border: 3px double black;
+}
 
-  #black-picker img{
-    position: absolute;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-top: 50px;
-    margin-left: 10%;
-  }
+#black-picker img{
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-left: 40px;
+  border: 3px double grey;
+}
 
-  #black-picker img:hover {
-    border: 3px double grey;
-  }
+#black-picker img:hover {
+  border: 3px double black;
+}
 
-  #color {
-    position: absolute;
-  }
+#color {
+  margin-right: -70px;
+  margin-top: 8px;
+}
