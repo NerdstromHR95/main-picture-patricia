@@ -1,0 +1,147 @@
+/* Left carousel elements */
+.slick-prev:before {
+  color: black !important;
+}
+
+.slick-next:before {
+  color: black !important;
+}
+
+.slick-slider {
+    top: 40px;
+    margin-top: 30px;
+  }
+
+.slick-list {
+    height: 540px;
+    width: 160px;
+    top: 30px;
+}
+
+.slick-slide, .slick-slide *{ 
+    outline: none !important; 
+}
+
+.slick-prev, .slick-next {
+    left: 50%;
+    transform: translate(-50%, 0) rotate(90deg);
+    margin-left: 47px;
+    margin-top: 30px;
+
+  }
+  .slick-next {
+    top: 100%;
+    bottom: -28px;
+  }
+  .slick-prev {
+    top: -30px;
+  }
+
+  .slick-slider, .slick-vertical, .slick-initialized {
+    width: 60px;
+    height: auto;
+  } 
+
+  /* Carousel */
+
+  #container-left img{
+    outline:0;
+    width: 60px;
+    height: auto;
+    margin-left: 50px;
+    margin-top: 0px;
+    color: none;
+    cursor: pointer;
+ }
+
+ #container-left img:hover{
+  border-bottom: 3px solid rgba(170, 165, 165, 0.657); 
+ }
+ 
+ .border #container-left:hover {
+   color: pink
+ }
+/* Main Image */
+
+ .container img{
+  position: absolute;
+  width: 400px;
+  height: auto;
+  margin-top: 75px;
+  margin-left: 200px;
+ }
+
+ .container img:hover {
+  cursor: zoom-in;
+}
+
+.zoomed {
+  position: absolute;
+  transition: 0.4s opacity ease-in-out;
+  margin-left: 200px !important;
+  margin-top: 30px;
+  top: 0px;
+}
+
+.zoomed:hover {
+  cursor: zoom-in;
+} 
+
+/* Container Color Picker */
+
+#container-color {
+  position: fixed;
+  display: inline-block;
+  top:85%;
+  right:0%;
+  background-color: white;
+  height: 400px;
+  width: 118%;
+  margin-right:-20%;
+  } 
+
+#red-picker img{
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-left: 80px;
+  border: 3px double grey;
+}
+#red-picker img:hover {
+  border: 3px double black;
+}
+
+#white-picker img{
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-right: -70px;
+  border: 3px double grey;
+}
+
+#white-picker img:hover {
+  border: 3px double black;
+}
+
+#black-picker img{
+  position: absolute;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
+  margin-left: 40px;
+  border: 3px double grey;
+}
+
+#black-picker img:hover {
+  border: 3px double black;
+}
+
+#color {
+  margin-right: -70px;
+  margin-top: 8px;
+}
