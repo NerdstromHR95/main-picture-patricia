@@ -6,7 +6,6 @@ import ImageZoom from 'react-medium-image-zoom';
 import '../main.css';
 import Carousel from './Carousel';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
