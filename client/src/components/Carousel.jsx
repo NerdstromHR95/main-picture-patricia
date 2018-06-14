@@ -16,7 +16,7 @@ const Carousel = (props) => {
     className: 'carousel',
   };
   return (
-    <div>
+    <div id="test">
       <Slider {...settings} >
         {props.img.map((img, index) =>
           <div onClick={(event => props.func(event))} id="container-left" key={index}> <img src={img} alt="thumbnails" /> </div>)}

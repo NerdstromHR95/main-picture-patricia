@@ -84,7 +84,7 @@ class App extends React.Component {
   render() {
     if (this.state.click === false) {
       return (
-        <div>
+        <div id="wrapper">
           <div className="container" onClick={() => this.changeState()}> <img src={this.state.mainImage} alt="product" /> </div>
           <Carousel img={this.state.products} func={this.changeMainPhoto} />
         </div>

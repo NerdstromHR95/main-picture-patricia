@@ -7,7 +7,7 @@ Instructions:
 
 2. Install MySQL;
 
-3. Create a config.js file for MySQL connection;
+3. Update the config.js file inside of the database-mysql folder;
 
  const mysql = require('mysql');
 
