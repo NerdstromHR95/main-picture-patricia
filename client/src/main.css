@@ -1,43 +1,32 @@
 /* Left carousel elements */
-.slick-prev:before {
+.carousel .slick-prev:before {
   color: black !important;
 }
 
-.slick-next:before {
+.carousel .slick-next:before {
   color: black !important;
 }
 
-.slick-slider {
-    top: 40px;
-    margin-top: 30px;
-  }
-
-.slick-list {
-    height: 540px;
-    width: 160px;
-    top: 30px;
-}
-
-.slick-slide, .slick-slide *{ 
+.carousel .slick-slide, .carousel .slick-slide { 
     outline: none !important; 
 }
 
-.slick-prev, .slick-next {
+.carousel .slick-prev, .carousel .slick-next {
     left: 50%;
     transform: translate(-50%, 0) rotate(90deg);
     margin-left: 47px;
     margin-top: 30px;
 
   }
-  .slick-next {
+ .carousel .slick-next {
     top: 100%;
     bottom: -28px;
   }
-  .slick-prev {
+  .carousel .slick-prev {
     top: -30px;
   }
 
-  .slick-slider, .slick-vertical, .slick-initialized {
+  .carousel .slick-slider, .carousel .slick-vertical, .carousel .slick-initialized {
     width: 60px;
     height: auto;
   } 

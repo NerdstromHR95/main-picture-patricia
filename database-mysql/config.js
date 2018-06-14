@@ -1,5 +1,5 @@
 module.exports = {
-  user: 'patricia',
-  password: 'patricia',
+  user: ,
+  password: ,
   database: 'nerdstrom',
 };
