@@ -1,44 +1,60 @@
 /* Left carousel elements */
+
+.carousel {
+  top: 80px !important;
+ }
+
+.carousel .slick-list {
+  top: 5px;
+  height: 530px;
+  width: 130px;
+ }
+
+ .carousel .slick-slide {
+  width: 80px;
+  height: 50px;
+  padding-bottom: 50px
+}
+
+ #wrapper {
+  width: 130px;
+  height: 100px;
+ }
+
 .carousel .slick-prev:before {
-  color: black !important;
+ color: black;
 }
 
 .carousel .slick-next:before {
-  color: black !important;
-}
-
-.carousel .slick-slide, .carousel .slick-slide { 
-    outline: none !important; 
+ color: black;
 }
 
 .carousel .slick-prev, .carousel .slick-next {
-    left: 50%;
-    transform: translate(-50%, 0) rotate(90deg);
-    margin-left: 47px;
-    margin-top: 30px;
-
-  }
- .carousel .slick-next {
-    top: 100%;
-    bottom: -28px;
-  }
-  .carousel .slick-prev {
-    top: -30px;
-  }
-
-  .carousel .slick-slider, .carousel .slick-vertical, .carousel .slick-initialized {
-    width: 60px;
-    height: auto;
-  } 
+   left: 50px;
+   transform: translate(-50%, 0) rotate(90deg);
+ }
+.carousel .slick-next {
+   top: 530px;
+   margin-left: 10px;
+ }
+ .carousel .slick-prev {
+   top: -25px;
+   margin-left: 10px;
+ }
 
   /* Carousel */
 
+  #container-left {
+    outline: 0 !important;
+    position: relative;
+   }
+
   #container-left img{
-    outline:0;
     width: 60px;
     height: auto;
-    margin-left: 50px;
-    margin-top: 0px;
+    top: 0px;
+    margin-left: 30px;
+    margin-top:0px;
     color: none;
     cursor: pointer;
  }
@@ -47,9 +63,6 @@
   border-bottom: 3px solid rgba(170, 165, 165, 0.657); 
  }
  
- .border #container-left:hover {
-   color: pink
- }
 /* Main Image */
 
  .container img{
@@ -64,9 +77,10 @@
   cursor: zoom-in;
 }
 
+/* Zoom Image */
+
 .zoomed {
   position: absolute;
-  transition: 0.4s opacity ease-in-out;
   margin-left: 200px !important;
   margin-top: 30px;
   top: 0px;
@@ -75,7 +89,6 @@
 .zoomed:hover {
   cursor: zoom-in;
 } 
-
 /* Container Color Picker */
 
 #container-color {
